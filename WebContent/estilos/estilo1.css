@@ -1,0 +1,48 @@
+@CHARSET "UTF-8";
+
+
+
+html, body{
+	
+	height: 100%;
+	min-height:100%;
+}
+
+.imghome{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+}
+
+
+
+#imgh{
+	position: absolute;
+	left: 550px;
+	top: 300px;
+}
+
+.window{
+			display:none;
+			width:300px;
+			height:300px;
+			position:absolute;
+			left:0;
+			top:0;
+			background:#FFF;
+			z-index:9900;
+			padding:10px;
+			/*border-radius:10px;*/
+		}
+
+#mascara{
+			position:absolute;
+  			left:0;
+  			top:0;
+  			z-index:9000;
+  			background-color:#000;
+  			display:none;
+}
+
+.fechar{display:block; text-align:right;}
