@@ -164,11 +164,5 @@
 	</script>
 	<!-- Final Template -->
 
-
-<!-- public Carro(int idCarro, String marca, String modelo, int cv, int cc, int lugares, String matricula,
-					String combustivel, String primeiroRegisto, int kmsInicial, boolean estadoCarro) {
- -->
-
-
 </body>
 </html>

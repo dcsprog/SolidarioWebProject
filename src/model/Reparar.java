@@ -11,7 +11,7 @@ public class Reparar {
 	public Reparar(int irReparacao, Carro carro, ArrayList<Peca> pecasTiradas, ArrayList<Peca> pecasMetidas,
 			String dataInicio, String dataFim, double custoMaoDeObra) {
 		super();
-		this.irReparacao = irReparacao;
+		this.idReparacao = irReparacao;
 		this.carro = carro;
 		this.pecasTiradas = pecasTiradas;
 		this.pecasMetidas = pecasMetidas;
@@ -20,7 +20,7 @@ public class Reparar {
 		CustoMaoDeObra = custoMaoDeObra;
 	}
 
-	private int irReparacao;
+	private int idReparacao;
 	private Carro carro;
 	private ArrayList<Peca> pecasTiradas;
 	private ArrayList<Peca> pecasMetidas;
@@ -30,11 +30,11 @@ public class Reparar {
 	
 	
 	public int getIrReparacao() {
-		return irReparacao;
+		return idReparacao;
 	}
 
 	public void setIrReparacao(int irReparacao) {
-		this.irReparacao = irReparacao;
+		this.idReparacao = irReparacao;
 	}
 
 	public Carro getCarro() {
