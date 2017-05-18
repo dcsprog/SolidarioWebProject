@@ -28,7 +28,7 @@ public class SCarro {
 			arCarros.add(c);
 	}
 	
-	public Carro listarCarId(int idCar){
+	public Carro procurarCar(int idCar){
 		
 		Carro cs =	new Carro();
 		for(Carro c:arCarros){

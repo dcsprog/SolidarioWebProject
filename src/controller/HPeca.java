@@ -21,7 +21,7 @@ import services.SReparacao;
 public class HPeca extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private static SReparacao arRep;
-    //private static SPeca arP;
+    private static SPeca arPCS;
     private ArrayList<Peca> arPT;
     private ArrayList<Peca> arPM;
     
@@ -31,6 +31,7 @@ public class HPeca extends HttpServlet {
     public HPeca() {
         super();
         arRep = new SReparacao();
+        arPCS = new SPeca();
         arPT = new ArrayList<>();
         arPM = new ArrayList<>();
     }
@@ -40,15 +41,14 @@ public class HPeca extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//request.setAttribute("listaPecaT", arRep.getArReparacao().get(0).getPecasTiradas());
-		//request.setAttribute("listaPecaM", arRep.getArReparacao().get(0).getPecasMetidas());
+		request.setAttribute("listaPecaT", arRep.getArReparacao().get(Integer.parseInt(request.getParameter("idR"))).getPecasTiradas());
+		request.setAttribute("listaPecaM", arRep.getArReparacao().get(Integer.parseInt(request.getParameter("idR"))).getPecasMetidas());
 		//request.setAttribute("listaPeca", arRep.getArReparacao());
-		
 		//request.setAttribute("listaPecaT", arPT);
 		
 		HttpSession session = request.getSession(true);
-		request.getSession().setAttribute("listaPecaT", arPT);
-		request.getSession().setAttribute("listaPecaM", arPM);
+		request.getSession().setAttribute("listaPecaT", arRep.getArReparacao().get(Integer.parseInt(request.getParameter("idR"))).getPecasTiradas());
+		request.getSession().setAttribute("listaPecaM", arRep.getArReparacao().get(Integer.parseInt(request.getParameter("idR"))).getPecasMetidas());
 		
 		request.getRequestDispatcher("rgReparacao.jsp").forward(request, response);
 		
@@ -59,32 +59,21 @@ public class HPeca extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		if(request.getParameter("elimPT")==null){ //Se não receber valor do objeto elim
+		if(request.getParameter("elimPM")==null){ //Se não receber valor do objeto elim
 			if(request.getParameter("tipo").equals("1")){ //Se a variavel tipo, recebida por post for igual a 1, ele irá criar novo funcionário
-				Peca p = new Peca(arPT.size(),request.getParameter("nomeP"),request.getParameter("descricao"),Double.parseDouble(request.getParameter("preco")));
 				
+				arPCS.addPecaM(Integer.parseInt(request.getParameter("idR")),arRep.getArReparacao().size(),request.getParameter("nomePM"),request.getParameter("descricaoPM"),Double.parseDouble(request.getParameter("precoPM")));
 				
 			}else{ //Se a variavel tipo, recebida por post for diferente de 1, ele irá editar funcionário
 				
-				Boolean a = true;
-				
-				if(request.getParameter("estado").equals("true")){
-					a = true;
-				}else {
-					a = false;
-				}
-				
-				
-
-				
+				arPCS.editarPecaM(Integer.parseInt(request.getParameter("idR")),Integer.parseInt(request.getParameter("idPT")), request.getParameter("nomePM"), request.getParameter("descricaoPM"), Double.parseDouble(request.getParameter("precoPM")));
 				
 			}
 		}else{ //Se reseber valor do objeto elim, apaga
 			
 			//scarro.elimCarro(Integer.parseInt(request.getParameter("elim")));
+			arPCS.elimPecaM(Integer.parseInt(request.getParameter("idR")), Integer.parseInt(request.getParameter("elimPM")));
 		}
-		
-		
 		
 		this.doGet(request, response);
 	}

@@ -99,7 +99,6 @@ function editarFunc(field) { //Mandar dados da tabela para o formulário
 
 
 function editarCarro(field){
-	alert(field);
 	$("#idC").attr("value",$(field).attr('id'));
 	$("#tipo").attr("value","2");
 	$("#btnSubCarro").css("display","none");
@@ -114,4 +113,37 @@ function editarCarro(field){
 	$("#dataPReg").attr("value",$("td.dataPReg"+$(field).attr('id')).html());
 	$("#kmi").attr("value",$("td.kmi"+$(field).attr('id')).html());
 	$("#estado").attr("value",$("td.estado"+$(field).attr('id')).html());
+}
+function editarReparacao(field){
+	$("#idR").attr("value", $(field).attr('id'));
+	$("#tipo").attr("value","2");
+	$("#btnSubRep").css("display", "none");
+	$("#btnEditRep").css("display", "block");
+	$("#carro").attr("value",$("td.carro"+$(field).attr('id')).html());
+	$("#pRetirada").attr("value",$("td.pRetirada"+$(field).attr('id')).html());
+	$("#pReposta").attr("value",$("td.pReposta"+$(field).attr('id')).html());
+	$("#dataIn").attr("value",$("td.dataIn"+$(field).attr('id')).html());
+	$("#dataFim").attr("value",$("td.dataFim"+$(field).attr('id')).html());
+	$("#precoM").attr("value",$("td.precoM"+$(field).attr('id')).html());
+
+}
+
+function editarPecaT(field){
+	$("#idPT").attr("value", $(field).attr('id'));
+	$("#tipo").attr("value", "2");
+	$("btnSubPecaT").css("display", "none");
+	$("btnEdiPecaT").css("display", "block");
+	$("#nomeP").attr("value",$("td.nomeP"+$(field).attr('id')).html());
+	$("#descricao").attr("value",$("td.descricao"+$(field).attr('id')).html());
+	$("#preco").attr("value",$("td.preco"+$(field).attr('id')).html());
+}
+
+function editarPecaM(field){
+	$("#idPM").attr("value", $(field).attr('id'));
+	$("#tipo").attr("value", "2");
+	$("btnSubPecaM").css("display", "none");
+	$("btnEdiPecaM").css("display", "block");
+	$("#nomePM").attr("value",$("td.nomePM"+$(field).attr('id')).html());
+	$("#descricaoPM").attr("value",$("td.descricaoPM"+$(field).attr('id')).html());
+	$("#precoPM").attr("value",$("td.precoPM"+$(field).attr('id')).html());
 }

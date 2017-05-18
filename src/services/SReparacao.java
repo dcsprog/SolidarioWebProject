@@ -23,7 +23,7 @@ public class SReparacao {
 		this.arReparacao = arReparacao;
 	}
 	
-	public void reparar(Carro automovel, ArrayList<Peca> pecasTirada, ArrayList<Peca> pecasIntroduzida,
+	public void addReparar(Carro automovel, ArrayList<Peca> pecasTirada, ArrayList<Peca> pecasIntroduzida,
 			String dataInicio, String dataFim, double custoMaoObra) {
 		Reparar r = new Reparar(arReparacao.size(),automovel, pecasTirada, pecasIntroduzida, dataInicio, dataFim, custoMaoObra);
 		arReparacao.add(r);

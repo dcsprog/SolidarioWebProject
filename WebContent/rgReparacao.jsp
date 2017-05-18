@@ -42,17 +42,18 @@
 			   		<div class="row">
 			    		<div class="col-lg-4"> <!-- Coluna de Formulario -->
 							<form action="HReparar" method="POST" role="form" id="form_Reparacao">
+								<input type="hidden" id="inserido" name="inserido" value="1">
 								<input type="hidden" id="tipo" name="tipo" value="1">
-								<input type="hidden" id="idC" name="idC" value="">
+								<input type="hidden" id="idR" name="idR" value="">
 								<div class="form-group">
 									<label>Carro</label>
-									<select  class="form-control" id="list">
+									<select  class="form-control" id="list" name="listCar">
 									<%
 										ArrayList arC = (ArrayList)request.getAttribute("listaCar");
 										if(arC != null){
 											for(int i=0; i<arC.size();i++){
 												Carro c = (Carro) arC.get(i);
-												out.append("<option value='i'>" + c.getMatricula() + "</option>");
+												out.append("<option value='"+i+"'>" + c.getMatricula() + "</option>");
 											}
 										}
 									%>		
@@ -81,7 +82,7 @@
 																 + "<td class='decricao" + p.getIdPeca() + "'>" + p.getDescricaoPeca() + "</td>"
 																 + "<td class='preco" + p.getIdPeca() + "'>" + p.getPrecoPeca() + "</td>"
 																 + "<td>"
-																	 + "<form method='POST' action='HPeca'>"
+																	 + "<form method='POST' action='HReparar'>"
 																	 	+ "<input name='elimPT' id='elimPT' type='hidden' value='" + p.getIdPeca() + "'>"
 																	 	+ "<input class='btn btn-default' type='submit' value='Apagar'>"
 																	 	+ "</form>"
@@ -118,7 +119,7 @@
 																 + "<td class='decricao" + p.getIdPeca() + "'>" + p.getDescricaoPeca() + "</td>"
 																 + "<td class='preco" + p.getIdPeca() + "'>" + p.getPrecoPeca() + "</td>"
 																 + "<td>"
-																	 + "<form method='POST' action='HPeca'>"
+																	 + "<form method='POST' action='HReparar'>"
 																	 	+ "<input name='elimPM' id='elimPM' type='hidden' value='" + p.getIdPeca() + "'>"
 																	 	+ "<input class='btn btn-default' type='submit' value='Apagar'>"
 																	 	+ "</form>"
@@ -133,10 +134,61 @@
 										</table>
 									</div>
 								</div>
+								<div class="form-group">
+									<label>Data Inicio</label>
+									<input class="form-control" type="date" name="dataIn" id="dataIn" value="" requerid>
+								</div>
+								<div class="form-group">
+									<label>Data Fim  </label>
+									<input class="form-control" type="date" name="dataFim" id="dataFim" value="" requerid>
+								</div>
+								<div class="form-group">
+								<label>Mão de Obra:</label>
+								<input class="form-control" type="text" name="totalm" id="totalm" value="" required>
+							</div>
+								<div>
+									<input class="btn btn-info" id="btnSubRep" type="submit" name="inserir" value="Inserir">
+									<input class="btn btn-info" id="btnEditRep" type="submit" name="editar" value="Editar" style="display: none;">
+								</div>
 							</form>
 						</div>
 						<div class="col-lg-8">
-						yrdfyvygv
+							<div class="table-responsive">
+							<table class="table table-striped table-bordered table-hover">
+								<tr>
+									<th>Carro</th>
+									<th>Pecas Retiradas</th>
+									<th>Pecas Repostas</th>
+									<th>Data Inicio</th>
+									<th>Data Fim</th>
+									<th>Mao Obra</th>
+									<th>Opcoes</th>
+								</tr>
+								<%
+								
+								ArrayList arRep = (ArrayList) request.getAttribute("listaRep");
+								for(int i=0;  i < arRep.size() ; i++){
+								Reparar rep = (Reparar) arRep.get(i);
+									out.append("<tr>"
+											 + "<td class='carro" + rep.getIrReparacao() + "'>" + rep.getCarro().getMatricula() + "</td>"
+											 + "<td class='pRetirada" + rep.getIrReparacao() + "'>" + rep.getPecasTiradas().size()+ "</td>"
+											 + "<td class='pReposta" + rep.getIrReparacao() + "'>" + rep.getPecasMetidas().size()+ "</td>"
+											 + "<td class='dataIn" + rep.getIrReparacao() + "'>" + rep.getDataInicio() + "</td>"
+											 + "<td class='dataFim" + rep.getIrReparacao() + "'>" + rep.getDataFim()+ "</td>"
+											 + "<td class='precoM" + rep.getIrReparacao() + "'>" + rep.getCustoMaoDeObra()+"</td>"
+											 + "<td>"
+												 + "<form method='POST' action='HReparar'>"
+												    + "<input type='hidden' id='inserido' name='inserido' value='1'>"
+												 	+ "<input name='elimRP' id='elimRP' type='hidden' value='" + rep.getIrReparacao() + "'>"
+												 	+ "<input class='btn btn-default' type='submit' value='Apagar'>"
+												 	+ "</form>"
+														 	+ "<button class='btn btn-default' id='" + rep.getIrReparacao()+"' onclick='editarReparacao(this)'>Editar</button>"
+												 + "</form>"	
+											+ "</td></tr>");
+									}
+								%>
+							</table>
+						</div>
 						</div>
 					</div>
 				</div>

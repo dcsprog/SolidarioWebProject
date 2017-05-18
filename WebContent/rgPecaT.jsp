@@ -39,12 +39,13 @@
 		    <div class="panel-body"> <!-- Conteudo -->
 			    <div class="row">
 			    	<div class="col-lg-4"> <!-- Coluna de Formulario -->
-						<form action="HPeca" method="POST" role="form" id="form_PecasT">
+						<form action="HReparar" method="POST" role="form" id="form_PecasT">
+						<input type="hidden" id="inserido" name="inserido" value="3">
 							<input type="hidden" id="tipo" name="tipo" value="1">
 							<input type="hidden" id="idPT" name="idPT" value="">
 							<div class="form-group">
 								<label>Nome:</label>
-								<input class="form-control" type="text" name="momeP" id="nomeP" value="" autofocus required>
+								<input class="form-control" type="text" name="nomeP" id="nomeP" value="" autofocus required>
 							</div>
 							<div class="form-group">
 								<label>Descrição</label>

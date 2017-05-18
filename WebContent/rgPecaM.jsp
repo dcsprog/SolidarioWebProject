@@ -38,20 +38,21 @@
 		    <div class="panel-body"> <!-- Conteudo -->
 			    <div class="row">
 			    	<div class="col-lg-4"> <!-- Coluna de Formulario -->
-						<form action="HPeca" method="POST" role="form" id="form_PecasM">
+						<form action="HReparar" method="POST" role="form" id="form_PecasM">
+							<input type="hidden" id="inserido" name="inserido" value="2">
 							<input type="hidden" id="tipo" name="tipo" value="1">
 							<input type="hidden" id="idPM" name="idPM" value="">
 							<div class="form-group">
 								<label>Nome:</label>
-								<input class="form-control" type="text" name="momeP" id="nomeP" value="" autofocus required>
+								<input class="form-control" type="text" name="nomePM" id="nomePM" value="" autofocus required>
 							</div>
 							<div class="form-group">
 								<label>Descrição</label>
-								<input class="form-control" type="text" name="descricao" id="descricao" value="" autofocus required>
+								<input class="form-control" type="text" name="descricaoPM" id="descricaoPM" value="" autofocus required>
 							</div>
 							<div class="form-group">
 								<label>Preco</label>
-								<input class="form-control" type="text" name="preco" id="preco" value="" autofocus requerid>
+								<input class="form-control" type="text" name="precoPM" id="precoPM" value="" autofocus requerid>
 							</div>
 							<div>
 								<input class="btn btn-info" id="btnSubPecaM" type="submit" name="inserir" value="Inserir">

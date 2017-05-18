@@ -9,7 +9,7 @@ public class SPeca {
 	private ArrayList<Peca> arPeca;
 	private SReparacao rep;
 	public SPeca(){
-		arPeca = new ArrayList<>();
+		//rPeca = new ArrayList<>();
 		rep = new SReparacao();
 	}
 
@@ -21,8 +21,9 @@ public class SPeca {
 		this.arPeca = arPeca;
 	}
 	
-	public void addPeca(int id,String nomePeca, String descricaoPeca, double precoPeca){
+	public void addPecaM(int idR,int id,String nomePeca, String descricaoPeca, double precoPeca){
 		Peca p = new Peca(id,nomePeca,descricaoPeca,precoPeca);
+		rep.getArReparacao().get(idR).getPecasMetidas().add(p);
 	}
 	
 	public Peca listaPeca(int idP){
@@ -39,17 +40,16 @@ public class SPeca {
 		rep.getArReparacao().get(idR).getPecasMetidas().remove(idPM);
 		for(int i=idR;i<rep.getArReparacao().size();i++){
 			for(int j=idPM;j<rep.getArReparacao().get(i).getPecasMetidas().size();j++){
-				//arPeca.get(i).setIdPeca(arPeca.get(i).getIdPeca()-1);
-				rep.getArReparacao().get(i).setPecasMetidas();
+				rep.getArReparacao().get(i).getPecasMetidas().get(j).setIdPeca(rep.getArReparacao().get(i).getPecasMetidas().get(j).getIdPeca()-1);
 			}
 			
 		}
 	}
 	
-	public void editarPeca(int idPeca,String nomePeca, String descricaoPeca, double precoPeca){
-		this.arPeca.get(idPeca).setNomePeca(nomePeca);
-		this.arPeca.get(idPeca).setDescricaoPeca(descricaoPeca);
-		this.arPeca.get(idPeca).setPrecoPeca(precoPeca);
+	public void editarPecaM(int idRep,int idPeca,String nomePeca, String descricaoPeca, double precoPeca){
+		this.rep.getArReparacao().get(idRep).getPecasMetidas().get(idPeca).setNomePeca(nomePeca);
+		this.rep.getArReparacao().get(idRep).getPecasMetidas().get(idPeca).setDescricaoPeca(descricaoPeca);
+		this.rep.getArReparacao().get(idRep).getPecasMetidas().get(idPeca).setPrecoPeca(precoPeca);
 	}
 	
 	
