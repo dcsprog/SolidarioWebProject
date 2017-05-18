@@ -22,7 +22,6 @@ public class HReparar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private static SReparacao arRep;
     private static SCarro arCar;
-    private static ArrayList<Carro> arCarro;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -35,12 +34,9 @@ public class HReparar extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		
+	
 		HttpSession session = request.getSession();
-		arCarro = (ArrayList<Carro>)session.getAttribute("listaCar");
-		request.setAttribute("listaCar", arCarro );
+		request.setAttribute("listaCar", session.getAttribute("listaCar"));
 		request.getRequestDispatcher("/rgReparacao.jsp").forward(request, response);
 	}
 

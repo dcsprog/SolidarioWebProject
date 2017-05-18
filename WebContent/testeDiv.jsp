@@ -38,38 +38,28 @@
 		</div>
 		<div class="panel-body">
 			<div class="row">
-				<div class="col-lg-6" style="background-color:red">
-				
+				<div class="col-lg-4" style="background-color:red">
+					<form action="HCarro" method="POST" role="form" id="form_Carros">
+							<input type="hidden" id="tipo" name="tipo" value="1">
+							<input type="hidden" id="idC" name="idC" value="">
+							<div class="col-lg-12"> 
+								<div class="table-responsive">
+									<table class="table table-striped table-bordered table-hover">
+										<tr>
+											<th>Nome</th>
+											<th>Descrição</th>
+											<th>Preço</th>
+										</tr>
+									</table>
+								</div>
+							</div>
+							
+					</form>		
 				</div>
 			</div>
 		</div>
-		<div class="panel-body">
-			<div class="row">
-				<div class="col-lg-6" style="background-color:green">
-				
-				</div>
-			</div>
-		</div>
+		
 	</div>
-					<div class="col-lg-8"> <!-- Coluna Tabela -->
-						<div class="table-responsive">
-							<table class="table table-striped table-bordered table-hover">
-								<tr>
-									<th>Marca</th>
-									<th>Modelo</th>
-									<th>Potencia</th>
-									<th>Cilindrada</th>
-									<th>Numero de Lugares</th>
-									<th>Matricula</th>
-									<th>Combustivel</th>
-									<th>Data de Registo</th>
-									<th>Kilometros Marcados</th>
-									<th>Estado Carro</th>
-									<th>Opcoes</th>
-								</tr>
-							</table>
-						</div>
-					</div>
 
 </body>
 </html>

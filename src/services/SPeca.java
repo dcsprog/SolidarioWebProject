@@ -7,10 +7,10 @@ import model.Peca;
 public class SPeca {
 
 	private ArrayList<Peca> arPeca;
-	
+	private SReparacao rep;
 	public SPeca(){
-		
 		arPeca = new ArrayList<>();
+		rep = new SReparacao();
 	}
 
 	public ArrayList<Peca> getArPeca() {
@@ -21,9 +21,8 @@ public class SPeca {
 		this.arPeca = arPeca;
 	}
 	
-	public void addPeca(String nomePeca, String descricaoPeca, double precoPeca){
-		Peca p = new Peca(arPeca.size(),nomePeca,descricaoPeca,precoPeca);
-		arPeca.add(p);
+	public void addPeca(int id,String nomePeca, String descricaoPeca, double precoPeca){
+		Peca p = new Peca(id,nomePeca,descricaoPeca,precoPeca);
 	}
 	
 	public Peca listaPeca(int idP){
@@ -36,10 +35,14 @@ public class SPeca {
 		return p;
 	}
 	
-	public void elimPeca(int id){
-		arPeca.remove(id);
-		for(int i=id;i<arPeca.size();i++){
-			arPeca.get(i).setIdPeca(arPeca.get(i).getIdPeca()-1);
+	public void elimPecaM(int idR,int idPM){
+		rep.getArReparacao().get(idR).getPecasMetidas().remove(idPM);
+		for(int i=idR;i<rep.getArReparacao().size();i++){
+			for(int j=idPM;j<rep.getArReparacao().get(i).getPecasMetidas().size();j++){
+				//arPeca.get(i).setIdPeca(arPeca.get(i).getIdPeca()-1);
+				rep.getArReparacao().get(i).setPecasMetidas();
+			}
+			
 		}
 	}
 	
